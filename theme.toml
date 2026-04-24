@@ -1,0 +1,11 @@
+# Theme metadata
+name = "elizaibeth"
+license = "MIT"
+licenselink = "https://github.com/yourname/elizaibeth/blob/main/LICENSE"
+description = "A warm, illustrated personal blog theme for Hugo inspired by the Me, Myself and AI brand."
+homepage = "https://github.com/yourname/elizaibeth"
+min_version = "0.112.0"
+tags = ["blog", "personal", "responsive", "syntax-highlighting", "rss"]
+
+[author]
+  name = "Elizaibeth"

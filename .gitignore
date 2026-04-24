@@ -1,0 +1,18 @@
+# Hugo
+.hugo_build.lock
+resources/_gen/
+public/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Claude
+.claude/

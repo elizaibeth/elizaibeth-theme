@@ -1,0 +1,56 @@
+{{ define "main" }}
+<div class="list-page">
+  <header class="list-header">
+    <h1 class="list-title">{{ .Title }}</h1>
+    {{ with .Description }}
+      <p class="list-description">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <div class="post-list">
+    {{ $paginator := .Paginate .Pages 10 }}
+    {{ range $paginator.Pages }}
+    <article class="post-card">
+      {{ if .Params.image }}
+      <div class="post-card-image">
+        <a href="{{ .Permalink }}">
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+        </a>
+      </div>
+      {{ end }}
+      <div class="post-card-content">
+        <h2 class="post-card-title">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </h2>
+        <div class="post-card-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date.Format "January 2, 2006" }}
+          </time>
+          {{ if .ReadingTime }}
+            <span class="reading-time">{{ .ReadingTime }} min read</span>
+          {{ end }}
+        </div>
+        <p class="post-card-summary">
+          {{ .Summary | truncate 200 }}
+        </p>
+        <a href="{{ .Permalink }}" class="read-more">Read more &rarr;</a>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="pagination">
+    {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" class="pagination-prev">&larr; Newer</a>
+    {{ end }}
+    <span class="pagination-info">
+      Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+    </span>
+    {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" class="pagination-next">Older &rarr;</a>
+    {{ end }}
+  </nav>
+  {{ end }}
+</div>
+{{ end }}

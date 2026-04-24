@@ -1,0 +1,51 @@
+{{ define "main" }}
+<div class="home">
+{{/* Optional intro blurb from _index.md */}}
+  {{ with .Content }}
+  <section class="home-intro">
+    {{ . }}
+  </section>
+  {{ end }}
+
+  {{/* Recent posts */}}
+  <section class="recent-posts">
+    <h2 class="section-heading">Recent Posts</h2>
+    <div class="post-list">
+      {{ $pages := where .Site.RegularPages "Section" "posts" }}
+      {{ range first 5 $pages }}
+      <article class="post-card">
+        {{ if .Params.image }}
+        <div class="post-card-image">
+          <a href="{{ .Permalink }}">
+            <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+          </a>
+        </div>
+        {{ end }}
+        <div class="post-card-content">
+          <h3 class="post-card-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h3>
+          <div class="post-card-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">
+              {{ .Date.Format "January 2, 2006" }}
+            </time>
+            {{ if .ReadingTime }}
+              <span class="reading-time">{{ .ReadingTime }} min read</span>
+            {{ end }}
+          </div>
+          <p class="post-card-summary">{{ .Summary | truncate 200 }}</p>
+          <a href="{{ .Permalink }}" class="read-more">Read more &rarr;</a>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+
+    {{ $pages := where .Site.RegularPages "Section" "posts" }}
+    {{ if gt (len $pages) 5 }}
+    <div class="view-all">
+      <a href="{{ "posts/" | absURL }}" class="view-all-link">View all posts &rarr;</a>
+    </div>
+    {{ end }}
+  </section>
+</div>
+{{ end }}

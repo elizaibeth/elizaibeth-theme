@@ -1,0 +1,39 @@
+{{ define "main" }}
+<div class="error-page">
+  <h1>404</h1>
+  <p>Oops — looks like this page wandered off to get more tea.</p>
+  <a href="{{ .Site.BaseURL }}" class="back-home">Back to Home &rarr;</a>
+</div>
+<style>
+  .error-page {
+    text-align: center;
+    padding: 4rem 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .error-page h1 {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    color: var(--coral-red);
+    margin-bottom: 0.5rem;
+  }
+  .error-page p {
+    font-size: 1.15rem;
+    color: var(--dark-plum);
+    margin-bottom: 2rem;
+  }
+  .back-home {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: white;
+    background: var(--coral-red);
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+  .back-home:hover {
+    background: var(--coral-red-light);
+    color: white;
+  }
+</style>
+{{ end }}

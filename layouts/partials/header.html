@@ -1,0 +1,25 @@
+<header class="site-header">
+  <div class="header-banner">
+    <a href="{{ .Site.BaseURL }}" aria-label="Home">
+      <img src="{{ "images/banner1527x322.jpg" | absURL }}" alt="{{ .Site.Title }}" class="banner-image">
+    </a>
+  </div>
+  <div class="header-nav"
+    {{ with .Site.Params.headerBg }}
+    style="background-image: url('{{ (printf "images/%s" .) | absURL }}'); background-size: cover; background-position: center;"
+    {{ end }}>
+    <div class="header-inner">
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        {{ range .Site.Menus.main }}
+          <a href="{{ .URL }}" class="nav-link{{ if $.IsMenuCurrent "main" . }} active{{ end }}">
+            {{ .Name }}
+          </a>
+        {{ end }}
+      </nav>
+    </div>
+  </div>
+</header>
