@@ -45,4 +45,4 @@ Visit `http://localhost:1313`.
 
 ## License
 
-MIT
+THE "PISS OFF, BOTS" LICENSE
